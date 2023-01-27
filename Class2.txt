@@ -1,0 +1,84 @@
+ODD EVEN NUMBER
+#!/bin/bash
+clear
+echo "Try Something"
+read y
+x=`expr $y % 2`
+if [ $x -eq 0 ]; then
+   echo "Even Number"
+else
+echo "Odd Number"
+fi
+
+GREATEST NUMBER
+#!/bin/bash
+clear
+echo "enter value of a b c"
+read a
+read b
+read c
+if test $a -gt $b -a $a -gt $c
+then
+echo "a is greatest"
+else
+if test $b -gt $c
+then
+echo "b is greatest"
+else
+echo "c is greatest"
+fi
+fi
+
+MULTIPLY
+#!/bin/bash
+echo "Multiplication"
+echo "Enter a number till 9"
+read x
+for i in 1 2 3 4 5 6 7 8 9
+do
+t=`expr $x \* $i`
+echo $t
+done
+
+REMOVING ANY FILE
+#!/bin/bash
+clear
+`echo ls` > filelist
+for filename in `cat filelist`
+do
+if [ ! -d $filename ];then
+size=`ls -s $filename`
+size=`echo $size|cut -d " " -f 1`
+if [ $size -eq 0 ];then
+echo "Want to Remove $filename:"
+rm -i $filename
+fi
+fi
+done
+
+
+CHOOSING OPTIONS USING WHILE
+#!/bin/bash
+ans=y
+while [ $ans=="y" ]
+do
+echo "MENU\n"
+echo "1. List of files"
+echo "2. Today's Date"
+echo "3. Process Status"
+echo "4. Users of the System"
+echo "5. present working directory"
+echo "6. Quit to Unix"
+echo "Enter your option: "
+read choice
+echo "Choice Entered: $choice"
+case $choice in
+1) ls ;;
+2) date ;;
+3) ps ;;
+4) who ;;
+5) pwd ;;
+6) break ;;
+*) echo "Invalid Option" continue;;
+esac
+done
